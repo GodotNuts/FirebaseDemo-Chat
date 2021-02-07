@@ -1,5 +1,5 @@
-extends HSplitContainer
+extends TextureRect
 
 func set_item(item):
-    $UserName.text = item.user_name + ": "
-    $Text.text = item.text
+    $ChatBox/UserName.text = item.Username + " "
+    $ChatBox/Text.text = item.Text
