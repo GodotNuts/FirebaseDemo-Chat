@@ -1,35 +1,75 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ChatBox.gd" type="Script" id=1]
+[ext_resource path="res://Art/chat_item_bg_inv.png" type="Texture" id=2]
+[ext_resource path="res://Art/Kenney Mini Square.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://MainTheme.tres" type="Theme" id=4]
 
-[node name="ChatBox" type="HSplitContainer"]
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+Label/colors/font_color = Color( 0.780392, 0.941176, 0.847059, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = null
+Label/styles/normal = null
+
+[node name="TextureRect" type="TextureRect"]
 anchor_right = 1.0
-margin_right = 224.0
-margin_bottom = 82.0
-rect_min_size = Vector2( 1024, 82 )
-size_flags_horizontal = 2
-dragger_visibility = 2
+anchor_bottom = 1.0
+margin_bottom = -62.0
+rect_min_size = Vector2( 84, 22 )
+rect_clip_content = true
+theme = ExtResource( 4 )
+texture = ExtResource( 2 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="UserName" type="Label" parent="."]
-margin_right = 88.0
-margin_bottom = 44.0
+[node name="ChatBox" type="HSplitContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_right = -8.0
+margin_bottom = 1.90735e-06
+rect_min_size = Vector2( 72, 12 )
+rect_clip_content = true
+size_flags_vertical = 3
+theme = SubResource( 2 )
+custom_constants/separation = 0
+dragger_visibility = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UserName" type="Label" parent="ChatBox"]
+margin_top = 6.0
+margin_right = 14.0
+margin_bottom = 16.0
 grow_horizontal = 0
 grow_vertical = 0
-rect_min_size = Vector2( 88, 44 )
-size_flags_horizontal = 2
-size_flags_vertical = 2
+rect_min_size = Vector2( 14, 10 )
+size_flags_vertical = 6
 text = "Justinian:"
-valign = 1
+clip_text = true
 
-[node name="Text" type="LineEdit" parent="."]
-margin_left = 424.0
-margin_right = 1024.0
-margin_bottom = 44.0
-rect_min_size = Vector2( 600, 44 )
-size_flags_horizontal = 2
-size_flags_vertical = 2
-text = "Hey, how's it going?
-"
-
-[connection signal="text_entered" from="Text" to="." method="_on_Text_text_entered"]
+[node name="Text" type="Label" parent="ChatBox"]
+margin_left = 22.0
+margin_top = 6.0
+margin_right = 72.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 48, 10 )
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "text"
+align = 3
+clip_text = true
