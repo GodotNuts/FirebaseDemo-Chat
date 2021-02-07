@@ -9,6 +9,21 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "FirebaseContainer",
+"class": "CircularContainer",
+"language": "GDScript",
+"path": "res://firebase-ui/database_box_containers/base_boxcontainer/CircularContainer.gd"
+}, {
+"base": "PanelContainer",
+"class": "CustomBaseButton",
+"language": "GDScript",
+"path": "res://firebase-ui/buttons/base_button/base_button.gd"
+}, {
+"base": "PanelContainer",
+"class": "FieldContainer",
+"language": "GDScript",
+"path": "res://firebase-ui/field_containers/base_field_container/field_container.gd"
+}, {
 "base": "HTTPRequest",
 "class": "FirebaseAuth",
 "language": "GDScript",
@@ -17,7 +32,7 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "FirebaseContainer",
 "language": "GDScript",
-"path": "res://addons/godot-firebase/containers/container.gd"
+"path": "res://firebase-ui/database_box_containers/base_boxcontainer/FirebaseContainer.gd"
 }, {
 "base": "Node",
 "class": "FirebaseDatabase",
@@ -34,12 +49,17 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot-firebase/database/database_store.gd"
 }, {
+"base": "Node",
+"class": "FirebaseFirestore",
+"language": "GDScript",
+"path": "res://addons/godot-firebase/firestore/firestore.gd"
+}, {
 "base": "Resource",
 "class": "FirebaseResource",
 "language": "GDScript",
 "path": "res://addons/godot-firebase/database/resource.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "FirebaseStorage",
 "language": "GDScript",
 "path": "res://addons/godot-firebase/storage/storage.gd"
@@ -54,33 +74,56 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot-firebase/firestore/firestore_collection.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "FirestoreDocument",
 "language": "GDScript",
 "path": "res://addons/godot-firebase/firestore/firestore_document.gd"
+}, {
+"base": "TileMap",
+"class": "FirestoreTileMap",
+"language": "GDScript",
+"path": "res://firebase-ui/tilemaps/firestore_tilemap/firestore_tilemap.gd"
+}, {
+"base": "Reference",
+"class": "StorageReference",
+"language": "GDScript",
+"path": "res://addons/godot-firebase/storage/storage_reference.gd"
+}, {
+"base": "Reference",
+"class": "StorageTask",
+"language": "GDScript",
+"path": "res://addons/godot-firebase/storage/storage_task.gd"
 } ]
 _global_script_class_icons={
+"CircularContainer": "",
+"CustomBaseButton": "",
+"FieldContainer": "",
 "FirebaseAuth": "",
 "FirebaseContainer": "",
 "FirebaseDatabase": "",
 "FirebaseDatabaseReference": "",
 "FirebaseDatabaseStore": "",
+"FirebaseFirestore": "",
 "FirebaseResource": "",
 "FirebaseStorage": "",
 "FirebaseUserData": "",
 "FirestoreCollection": "",
-"FirestoreDocument": ""
+"FirestoreDocument": "",
+"FirestoreTileMap": "",
+"StorageReference": "",
+"StorageTask": ""
 }
 
 [application]
 
-config/name="FirebaseTestHarness"
-run/main_scene="res://Control.tscn"
+config/name="OneBitChat"
+run/main_scene="res://ChatApp.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
+Global="*res://Global.gd"
 
 [debug]
 
@@ -88,42 +131,41 @@ gdscript/warnings/enable=false
 
 [display]
 
-window/size/width=480
-window/size/height=720
-window/dpi/allow_hidpi=true
+window/size/width=84
+window/size/height=84
+window/size/resizable=false
+window/size/test_width=336
+window/size/test_height=336
 window/handheld/orientation="portrait"
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [editor_plugins]
 
 enabled=PoolStringArray( "godot-firebase", "http-sse-client" )
 
-[environment_variables]
+[importer_defaults]
 
-apiKey="AIzaSyBvl4-0960dIKF-P7V9c508xG72Qb_lO_I"
-authDomain="ristorantedigitaletest.firebaseapp.com"
-databaseURL="https://ristorantedigitaletest.firebaseio.com"
-projectId="ristorantedigitaletest"
-storageBucket="ristorantedigitaletest.appspot.com"
-messagingSenderId="340498762442"
-appId="1:340498762442:web:c4a0c1a7575c0e41d48233"
-measurementId="G-DTY4D8RZL1"
-googleId="340498762442-fo1ru5e6apibhbj1pq83gl4t0o81rhd5.apps.googleusercontent.com"
-googleSecret="8D0aTzsKQY8GfQVUe9P_GAk7"
-
-[firebase]
-
-environment_variables/apiKey="AIzaSyDU6T2yrMVEpjTPNZpqt5fHUjIyvUYtK4w"
-environment_variables/authDomain="fluted-gantry-245320.firebaseapp.com"
-environment_variables/databaseURL="https://fluted-gantry-245320.firebaseio.com"
-environment_variables/projectId="fluted-gantry-245320"
-environment_variables/storageBucket="fluted-gantry-245320.appspot.com"
-environment_variables/messagingSenderId="642802608856"
-environment_variables/appId="1:642802608856:web:1050141a83b3a2e78885ad"
-environment_variables/measurementId="G-72P3G0WHKG"
-environment_variables/googleId="340498762442-fo1ru5e6apibhbj1pq83gl4t0o81rhd5.apps.googleusercontent.com"
-environment_variables/googleSecret="8D0aTzsKQY8GfQVUe9P_GAk7"
-environment_variables/clientId="642802608856-8h1ie43dmg3961bcjkfgjn1k2qij83a2.apps.googleusercontent.com"
-environment_variables/clientSecret="Spd6nr8n2x-UpfBDA6gdnHlY"
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
 
 [input]
 
@@ -136,7 +178,12 @@ ui_tapped={
 [rendering]
 
 quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=1
+quality/intended_usage/framebuffer_allocation.mobile=1
+quality/2d/use_pixel_snap=true
 threads/thread_model=2
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+environment/default_clear_color=Color( 0.780392, 0.941176, 0.847059, 1 )
 environment/default_environment="res://default_env.tres"
+quality/dynamic_fonts/use_oversampling=false
